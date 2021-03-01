@@ -1,0 +1,181 @@
+$bg1: #f6d365;
+$bg2: #fda085;
+$header_color: white;
+$input_color: white;
+$accent: #ff6f47;
+$font_color: #333;
+$font_color_completed: #777;
+$checkbox: rgb(11, 212, 162);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: linear-gradient(120deg, $bg1 0%, $bg2 100%);
+    color: $header_color;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+header {
+    font-size: 5rem;
+    color: $header_color;
+    font-weight: 700;
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+header, form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form input, form button {
+    padding: .5rem;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    background: $input_color;
+}
+form input {
+    color: $font_color;
+    border-radius: 10px 0 0 10px;
+    border: 3px solid transparent;
+    transition: all .3s ease;
+
+    &:focus {
+        border: 3px solid $accent;
+    }
+}
+form button {
+    color: $accent;
+    cursor: pointer;
+    background: $input_color;
+    border-radius: 0 10px 10px 0;
+    border: 3px solid transparent;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $accent;
+        border: 3px solid $accent;
+        color: $input_color;
+    }
+}
+.filter-todo {
+    padding: 1rem;
+}
+.todo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .todo-list {
+        min-width: 30%;
+        list-style: none;
+
+        .todo {
+            margin: .5rem;
+            background: $input_color;
+            font-size: 1.5rem;
+            color: $font_color;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 1s ease;
+            border-radius: 10px;
+            overflow: hidden;
+
+            li {
+                flex: 1;
+                padding: 0 .5rem;
+
+                &.completed {
+                    text-decoration: line-through;
+                    color: $font_color_completed;
+                }
+            }
+            .trash-btn, .complete-btn {
+                color: $input_color;
+                cursor: pointer;
+                background: $accent;
+                outline: none;
+                padding: 1rem;
+                font-size: 1rem;
+                border: 3px solid $accent;
+                transition: all .3s ease;
+            
+                &:hover {
+                    background: $input_color;
+                    color: $accent;
+                }
+                .fa-trash, .fa-check {
+                    pointer-events: none;
+                }
+            }
+            .trash-btn {
+                border-radius: 0 10px 10px 0;
+            }
+            .complete-btn {
+                background: $checkbox;
+                border: 3px solid $checkbox;
+
+                &:hover {
+                    background: $input_color;
+                    color: $checkbox;
+                }
+            }
+        }
+    }
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+}
+.select {
+    border-radius: 10px;
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    &:after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        color: $input_color;
+        background: $accent;
+        cursor: pointer;
+        pointer-events: none;
+    }
+    select {
+        color: $accent;
+        background: $input_color;
+        border: 3px solid transparent;
+        font-family: 'Poppins', sans-serif;
+        outline: none;
+        cursor: pointer;
+        width: 12rem;
+        transition: all .3s ease;
+
+        &:hover {
+            background: $accent;
+            color: $input_color;
+            border: 3px solid $accent;
+        }
+        option {
+            background: $input_color;
+            color: $accent;
+            border: none;
+            outline: none;
+        }
+    }
+}
