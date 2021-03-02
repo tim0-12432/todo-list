@@ -1,11 +1,11 @@
-$bg1: #f6d365;
-$bg2: #fda085;
+$bg1: #f3e9d2;
+$bg2: #c6dabf;
 $header_color: white;
 $input_color: white;
-$accent: #ff6f47;
-$font_color: #333;
-$font_color_completed: #777;
-$checkbox: rgb(11, 212, 162);
+$accent: #88d498;
+$font_color: #114b5f;
+$font_color_completed: #91a1a7;
+$checkbox: #1a936f;
 
 * {
     margin: 0;
@@ -259,6 +259,7 @@ select {
         width: 50px;
         height: 50px;
         background: $accent;
+        box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
         display: flex;
         justify-content: center;
         align-items: center;
