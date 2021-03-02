@@ -1,11 +1,11 @@
-$bg1: #f3e9d2;
-$bg2: #c6dabf;
+$bg1: #f3f1e8;
+$bg2: #c6dae4;
 $header_color: white;
 $input_color: white;
-$accent: #88d498;
-$font_color: #114b5f;
-$font_color_completed: #91a1a7;
-$checkbox: #1a936f;
+$accent: #5fc6ce;
+$font_color: #092957;
+$font_color_completed: #7498c8;
+$checkbox: #1ab280;
 
 * {
     margin: 0;
@@ -21,6 +21,7 @@ body {
 header {
     font-size: 5rem;
     color: $header_color;
+    text-shadow: 0 0 15px rgba($color: black, $alpha: .2);
     font-weight: 700;
     width: 100%;
     position: relative;
@@ -30,6 +31,7 @@ header {
         margin-left: 20px;
         color: $font_color_completed;
         font-size: 2rem;
+        text-shadow: none;
         opacity: 0;
         transition: all .3s ease;
     }
@@ -51,6 +53,7 @@ form input, form button {
     border: none;
     outline: none;
     background: $input_color;
+    box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
 }
 form input {
     color: $font_color;
@@ -99,6 +102,7 @@ form button {
             transition: all 1s ease;
             border-radius: 10px;
             overflow: hidden;
+            box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
 
             li {
                 flex: 1;
@@ -160,6 +164,7 @@ select {
     margin: 1rem;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
 
     &:after {
         content: "\25BC";
@@ -219,6 +224,8 @@ select {
         button {
             outline: none;
             border-radius: 10px;
+            padding: .5rem;
+            font-size: 1.25rem;
             transition: all .3s ease;
 
             &:nth-child(1) {
