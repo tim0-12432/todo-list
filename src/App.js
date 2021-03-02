@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from "react";
+import { Prompt } from "react-st-modal";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
+import FloatingInfo from "./components/FloatingInfo";
 
 function App() {
     const [inputText, setInputText] = useState("");
     const [todos, setTodos] = useState([]);
     const [filter, setFilter] = useState("all");
     const [filteredTodos, setFilteredTodos] = useState([]);
+    const [title, setTitle] = useState("My Todo List");
 
     useEffect(() => {
       getLocalTodos();
+      getLocalTitle();
+      console.groupCollapsed("Easteregg!");
+      console.info("Congratulations! You found me!");
+      console.groupEnd();
     }, []);
     useEffect(() => {
       saveToLocalTodos();
@@ -24,26 +31,49 @@ function App() {
           setFilteredTodos(todos);
       }
     }, [todos, filter]);
+    useEffect(() => {
+      saveToLocalTitle();
+    }, [title]);
 
     const saveToLocalTodos = () => {
-      localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("todo-app.todos", JSON.stringify(todos));
     };
     const getLocalTodos = () => {
-      if (localStorage.getItem("todos") === null) {
-        localStorage.setItem("todos", JSON.stringify([]));
+      if (localStorage.getItem("todo-app.todos") === null) {
+        localStorage.setItem("todo-app.todos", JSON.stringify([]));
       } else {
-        let todoLocal = JSON.parse(localStorage.getItem("todos"));
+        let todoLocal = JSON.parse(localStorage.getItem("todo-app.todos"));
         setTodos(todoLocal);
       }
     };
+    const saveToLocalTitle = () => {
+      localStorage.setItem("todo-app.title", title);
+    };
+    const getLocalTitle = () => {
+      if (localStorage.getItem("todo-app.title") === null) {
+        localStorage.setItem("todo-app.title", title);
+      } else {
+        let titleLocal = localStorage.getItem("todo-app.title");
+        setTitle(titleLocal);
+      }
+    };
+
+    const changeTitleHandler = async () => {
+      const newTitle = await Prompt("Change list title", { defaultValue: title, isRequired: true, okButtonText: "change" });
+      if (newTitle !== undefined) {
+        setTitle(newTitle);
+      }
+    }
 
     return (
         <div className="App">
-            <header>
-              My Todo List
+            <header onClick={ changeTitleHandler }>
+              { title }
+              <i className="fas fa-pencil-alt" />
             </header>
             <Form inputText={ inputText } setInputText={ setInputText } todos={ todos } setTodos={ setTodos } setFilter={ setFilter } />
             <TodoList todos={ filteredTodos } setTodos={ setTodos } />
+            <FloatingInfo />
         </div>
     );
 }
