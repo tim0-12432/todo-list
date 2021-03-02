@@ -279,9 +279,11 @@ select {
         font-size: 17px;
         margin-top: 10px;
         color: $input_color;
+        text-shadow: 0 0 5px rgba($color: black, $alpha: .3);
         border-radius: 15px;
         padding: 2px 10px;
         background: rgba($color: white, $alpha: .1);
+        box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
         backdrop-filter: blur(10px);
         transition: all .3s ease;
 
