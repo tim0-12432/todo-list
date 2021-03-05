@@ -1,5 +1,7 @@
 import React from "react";
 import { Draggable } from 'react-beautiful-dnd';
+import { CustomDialog } from "react-st-modal";
+import TodoContextMenu from "./TodoContextMenu";
 
 const Todo = ({ todo, todos, setTodos }) => {
     const deleteHandler = (e) => {
@@ -37,7 +39,23 @@ const Todo = ({ todo, todos, setTodos }) => {
                     style={{ ...provided.draggableProps.style, boxShadow: snapshot.isDraggingOver ? "0 0 30px rgba(0, 0, 0, .3)" : "" }}
                 >
                     <i class="fas fa-equals" />
-                    <li className={ `todo-item${todo.completed ? " completed" : ""}` }>
+                    <li className={ `todo-item${todo.completed ? " completed" : ""}` }
+                        onClick={ async () => {
+                            const text = todo.text;
+                            const result = await CustomDialog(
+                                <TodoContextMenu todo={ todo }
+                                                todos={ todos }
+                                                setTodos={ setTodos }
+                                                completeHandler={ completeHandler }
+                                                deleteHandler={ deleteHandler }
+                                />,
+                                {
+                                    title: "Todo Options",
+                                    showCloseIcon: true,
+                                }
+                            );
+                        } }
+                    >
                         { todo.text }
                     </li>
                     <button onClick={ completeHandler } className="complete-btn">

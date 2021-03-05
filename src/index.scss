@@ -18,6 +18,10 @@ body {
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
 }
+
+/* ===========
+    HEADER
+=========== */
 header {
     font-size: 5rem;
     color: $header_color;
@@ -79,9 +83,74 @@ form button {
         color: $input_color;
     }
 }
-.filter-todo {
-    padding: 1rem;
+/* ===========
+    EDIT TODO LIST PROMPT
+=========== */
+#stfDialogPlace > div > div > div > div {
+    border-radius: 20px;
+
+    > button {
+        outline: none;
+
+        svg {
+            transition: all .3s ease;
+        }
+        &:hover svg {
+            fill: $accent;
+        }
+    }
+    > div {
+        color: $font_color;
+        background: $input_color;
+
+        > input {
+            padding: .35rem;
+            font-size: 2rem;
+            outline: none;
+            background: $input_color;
+            color: $font_color;
+            border-radius: 10px;
+            border: 3px solid transparent;
+            transition: all .3s ease;
+
+            &:focus, &:hover {
+                border: 3px solid $accent;
+            }
+        }
+        > button {
+            outline: none;
+            border-radius: 10px;
+            padding: .5rem;
+            font-size: 1.25rem;
+            transition: all .3s ease;
+
+            &:nth-child(1) {
+                background: $accent;
+                color: $input_color;
+                border: 3px solid $accent;
+
+                &:hover {
+                    background: $input_color;
+                    color: $accent;
+                }
+            }
+            &:nth-child(2) {
+                background: $input_color;
+                color: $font_color;
+                border: 3px solid transparent;
+
+                &:hover {
+                    background: $input_color;
+                    color: $accent;
+                    border: 3px solid $accent;
+                }
+            }
+        }
+    }
 }
+/* ===========
+    TODO-LIST
+=========== */
 .todo-container {
     display: flex;
     justify-content: center;
@@ -160,6 +229,56 @@ form button {
         }
     }
 }
+/* ===========
+    TODO LIST CONTEXT
+=========== */
+.todo-item-context {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+
+    > button {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $font_color;
+        cursor: pointer;
+        border-radius: 10px;
+        padding: .5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        background: $input_color;
+        border: 3px solid transparent;
+        transition: all .3s ease;
+        outline: none;
+        width: 100%;
+
+        &:hover {
+            background: $input_color;
+            border: 3px solid $accent;
+            color: $accent;
+        }
+        &[disabled] {
+            color: $font_color_completed;
+            pointer-events: none;
+        }
+        i {
+            margin-right: 10px;
+        }
+        h3 {
+            flex: 1;
+        }
+    }
+}
+/* ===========
+    FILTER SELECTION
+=========== */
+.filter-todo {
+    padding: 1rem;
+}
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -211,58 +330,9 @@ select {
         }
     }
 }
-#stfDialogPlace > div > div > div > div {
-    border-radius: 20px;
-
-    > div {
-        color: $font_color;
-        background: $input_color;
-
-        input {
-            padding: .35rem;
-            font-size: 2rem;
-            outline: none;
-            background: $input_color;
-            color: $font_color;
-            border-radius: 10px;
-            border: 3px solid transparent;
-            transition: all .3s ease;
-
-            &:focus, &:hover {
-                border: 3px solid $accent;
-            }
-        }
-        button {
-            outline: none;
-            border-radius: 10px;
-            padding: .5rem;
-            font-size: 1.25rem;
-            transition: all .3s ease;
-
-            &:nth-child(1) {
-                background: $accent;
-                color: $input_color;
-                border: 3px solid $accent;
-
-                &:hover {
-                    background: $input_color;
-                    color: $accent;
-                }
-            }
-            &:nth-child(2) {
-                background: $input_color;
-                color: $font_color;
-                border: 3px solid transparent;
-
-                &:hover {
-                    background: $input_color;
-                    color: $accent;
-                    border: 3px solid $accent;
-                }
-            }
-        }
-    }
-}
+/* ===========
+    INFORMATION
+=========== */
 .fab-container {
     max-width: 50%;
     max-height: 50%;
@@ -313,6 +383,9 @@ select {
     }
 }
 
+/* ===========
+    MOBILE DISPLAY
+=========== */
 @media (max-width: 700px) {
     header {
         font-size: 10vw;
