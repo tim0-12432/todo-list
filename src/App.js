@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "react-st-modal";
+import Settings from "./components/Settings";
+import Header from "./components/Header";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
 import FloatingInfo from "./components/FloatingInfo";
@@ -67,10 +69,8 @@ function App() {
 
     return (
         <div className="App">
-            <header onClick={ changeTitleHandler }>
-              { title }
-              <i className="fas fa-pencil-alt" />
-            </header>
+            <Settings title={ title } todos={ todos } setTodos={ setTodos } />
+            <Header title={ title } changeTitleHandler={ changeTitleHandler } />
             <Form inputText={ inputText } setInputText={ setInputText } todos={ todos } setTodos={ setTodos } setFilter={ setFilter } />
             <TodoList todos={ filteredTodos } setTodos={ setTodos } />
             <FloatingInfo />

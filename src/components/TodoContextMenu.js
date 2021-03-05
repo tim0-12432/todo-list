@@ -28,25 +28,25 @@ function TodoContextMenu({ todo, todos, setTodos, completeHandler, deleteHandler
                 changeTextHandler();
                 dialog.close(value);
             }}>
-                <i class="fas fa-pencil-alt" />
+                <i className="fas fa-pencil-alt" />
                 <h3>Edit Text</h3>
             </button>
             <button onClick={() => {
                 completeHandler();
                 dialog.close(value);
             }}>
-                <i class="fas fa-check" />
+                <i className="fas fa-check" />
                 <h3>{ `${ todo.completed ? "Uncomplete" : "Complete" } Todo` }</h3>
             </button>
             <button onClick={() => {
                 deleteHandler();
                 dialog.close(value);
             }}>
-                <i class="fas fa-trash" />
+                <i className="fas fa-trash" />
                 <h3>Delete Todo</h3>
             </button>
             <button disabled>
-                <i class="fas fa-angle-double-right" />
+                <i className="fas fa-angle-double-right" />
                 <h3>Make Sub-Todo</h3>
             </button>
         </div>
