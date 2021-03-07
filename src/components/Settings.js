@@ -14,6 +14,7 @@ const Settings = ({ title, todos, setTodos }) => {
         const result = await CustomDialog(
             <TodoExportMenu title={ title }
                             todos={ todos }
+                            setOpened={ setOpened }
             />,
             {
                 title: "Export Options",

@@ -1,7 +1,9 @@
 import { useState } from "react";
+import jsPDF from 'jspdf';
+import * as htmlToImage from 'html-to-image';
 import { useDialog } from 'react-st-modal';
 
-function TodoExportMenu({ title, todos }) {
+function TodoExportMenu({ title, todos, setOpened }) {
     const dialog = useDialog();
     const headers = ["todo", "completed", "sub"]
 
@@ -61,6 +63,41 @@ function TodoExportMenu({ title, todos }) {
         download(jsonData, "application/json", "json");
     };
 
+    async function exportPDF() {
+        setOpened(false);
+        let domElement = document.getElementById('root');
+        htmlToImage.toPng(domElement, { quality: .95 })
+        .then(function (dataUrl) {
+            const doc = new jsPDF();
+            const imgProps = doc.getImageProperties(dataUrl);
+            const pdfWidth = doc.internal.pageSize.getWidth();
+            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+            doc.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
+            doc.save(`${title.toLowerCase().replace(/ /g, "-")}.pdf`);
+        })
+        .catch(function (error) {
+            console.error("Something went wrong!", error);
+        });
+    };
+
+    async function exportIMG() {
+        setOpened(false);
+        let domElement = document.getElementById('root');
+        htmlToImage.toPng(domElement, { quality: .95 })
+        .then(function (dataUrl) {
+            const a = document.createElement("a");
+            a.setAttribute("hidden", "");
+            a.setAttribute("href", dataUrl);
+            a.setAttribute("download", `${title.toLowerCase().replace(/ /g, "-")}.png`);
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        })
+        .catch(function (error) {
+            console.error("Something went wrong!", error);
+        });
+    };
+
     async function exportText() {
         const data = getData();
         let txtRows = "";
@@ -89,9 +126,19 @@ function TodoExportMenu({ title, todos }) {
                 <i className="fab fa-js" />
                 <h3>JSON</h3>
             </button>
-            <button disabled>
+            <button onClick={() => {
+                exportPDF();
+                dialog.close(value);
+            }}>
                 <i className="fas fa-file-pdf" />
                 <h3>PDF</h3>
+            </button>
+            <button onClick={() => {
+                exportIMG();
+                dialog.close(value);
+            }}>
+                <i className="fas fa-file-image" />
+                <h3>Image</h3>
             </button>
             <button onClick={() => {
                 exportText();
