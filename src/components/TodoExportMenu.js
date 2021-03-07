@@ -20,8 +20,8 @@ function TodoExportMenu({ title, todos }) {
         const a = document.createElement("a");
         a.setAttribute("hidden", "");
         a.setAttribute("href", url);
-        a.setAttribute("download", `${title.toLowerCase().replace(" ", "-")}.${extension}`);
-        console.log(data, type, extension);
+        a.setAttribute("download", `${title.toLowerCase().replace(/ /g, "-")}.${extension}`);
+        //console.log(data, type, extension);
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
