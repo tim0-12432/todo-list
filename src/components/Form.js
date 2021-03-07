@@ -8,7 +8,7 @@ const Form = ({ inputText, setInputText, todos, setTodos, setFilter }) => {
         e.preventDefault();
         if (inputText !== "") {
             setTodos([
-                ...todos, {text: inputText, completed: false, id: Math.random() * 1000}
+                ...todos, {text: inputText, completed: false, sub: false, id: Math.random() * 1000}
             ]);
             setInputText("");
         }

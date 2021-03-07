@@ -166,6 +166,7 @@ form button {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 
     .todo-list {
         min-width: 30%;
@@ -184,6 +185,9 @@ form button {
             overflow: hidden;
             box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
 
+            &.sub {
+                margin-left: 20%;
+            }
             > i {
                 color: $font_color_completed;
                 margin: 0 10px;
@@ -241,15 +245,42 @@ form button {
     }
 }
 /* ===========
-    TODO LIST CONTEXT
+    TODO LIST CONTEXT, EXPORT/IMPORT MENU
 =========== */
-.todo-item-context {
+.todo-item-context, .export-menu, .import-menu {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 0 20px;
 
+    > label {
+        font-weight: 600;
+    }
+    > ul {
+        list-style-type: none;
+        align-self: flex-start;
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > li {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 5px;
+
+            i, input, h4 {
+                margin-right: 10px;
+            }
+            h4 {
+                flex: 1;
+            }
+        }
+    }
     > button {
         margin-bottom: 20px;
         display: flex;

@@ -3,13 +3,15 @@ import { useDialog } from 'react-st-modal';
 
 function TodoExportMenu({ title, todos }) {
     const dialog = useDialog();
+    const headers = ["todo", "completed", "sub"]
 
     const [value, setValue] = useState();
 
     const getData = () => {
         return todos.map(todo => ({
             todo: todo.text,
-            completed: todo.completed
+            completed: todo.completed,
+            sub: todo.sub
         }));
     }
     const download = (data, type, extension) => {
@@ -28,7 +30,6 @@ function TodoExportMenu({ title, todos }) {
     async function exportCSV() {
         const data = getData();
         const csvRows = [];
-        const headers = Object.keys(data[0]);
         csvRows.push(headers.join(','));
         for (const row of data) {
             const values = headers.map(header => {
@@ -45,12 +46,11 @@ function TodoExportMenu({ title, todos }) {
         const data = getData();
         const jsonBegin = `{"title":"${ title }","todos":[`;
         let jsonRows = "";
-        const headers = Object.keys(data[0]);
         for (const row of data) {
             jsonRows = jsonRows.concat(',{');
             for (const header of headers) {
                 const escaped = ("" + row[header]).replace(/"/g, '\\"');
-                jsonRows = jsonRows.concat(`"${header}":`, escaped);
+                jsonRows = jsonRows.concat(`"${header}":`, `"${escaped}"`);
                 if (headers.indexOf(header) !== headers.length -1) {
                     jsonRows = jsonRows.concat(",");
                 }
@@ -64,10 +64,9 @@ function TodoExportMenu({ title, todos }) {
     async function exportText() {
         const data = getData();
         let txtRows = "";
-        const headers = Object.keys(data[0]);
         for (const row of data) {
             const escaped = ("" + row["todo"]).replace(/"/g, '\\"');
-            txtRows = txtRows.concat(`${row.completed ? "&check;" : "&cir;" } `, escaped);
+            txtRows = txtRows.concat(`${ row.sub ? "\t" : "" }${row.completed ? "&check;" : "&cir;" } `, escaped);
             txtRows = txtRows.concat('\n');
         }
         const txtData = txtRows;
@@ -75,7 +74,7 @@ function TodoExportMenu({ title, todos }) {
     };
 
     return (
-        <div className="todo-item-context">
+        <div className="export-menu">
             <button onClick={() => {
                 exportCSV();
                 dialog.close(value);

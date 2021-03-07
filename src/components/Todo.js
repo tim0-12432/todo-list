@@ -32,13 +32,13 @@ const Todo = ({ todo, todos, setTodos }) => {
     return (
         <Draggable draggableId={ `draggable-${ todo.id }` } index={ getIndex() }>
             {(provided, snapshot) => (
-                <div className="todo"
+                <div className={ `todo${todo?.sub ? " sub" : "" }` }
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     style={{ ...provided.draggableProps.style, boxShadow: snapshot.isDraggingOver ? "0 0 30px rgba(0, 0, 0, .3)" : "" }}
                 >
-                    <i class="fas fa-equals" />
+                    <i className="fas fa-equals" />
                     <li className={ `todo-item${todo.completed ? " completed" : ""}` }
                         onClick={ async () => {
                             const text = todo.text;

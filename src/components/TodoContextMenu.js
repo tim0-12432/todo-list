@@ -20,7 +20,20 @@ function TodoContextMenu({ todo, todos, setTodos, completeHandler, deleteHandler
                 })
             );
         }
-      }
+    };
+    const subPageHandler = () => {
+        setTodos(
+            todos.map((item) => {
+                if (item.id === todo.id) {
+                    return {
+                        ...item, sub: !item.sub
+                    };
+                }
+                return item;
+            })
+        );
+        dialog.close(value);
+    };
 
     return (
         <div className="todo-item-context">
@@ -45,9 +58,9 @@ function TodoContextMenu({ todo, todos, setTodos, completeHandler, deleteHandler
                 <i className="fas fa-trash" />
                 <h3>Delete Todo</h3>
             </button>
-            <button disabled>
-                <i className="fas fa-angle-double-right" />
-                <h3>Make Sub-Todo</h3>
+            <button onClick={ subPageHandler }>
+                <i className={ `fas fa-angle-double-${ todo?.sub ? "left" : "right" }` } />
+                <h3>{ `Make ${ todo?.sub ? "normal " : "Sub-" }Todo` }</h3>
             </button>
         </div>
     );

@@ -12,6 +12,7 @@ function App() {
     const [filter, setFilter] = useState("all");
     const [filteredTodos, setFilteredTodos] = useState([]);
     const [title, setTitle] = useState("My Todo List");
+    const [lastStep, setLastStep] = useState({now: {}, before: {}});
 
     useEffect(() => {
       getLocalTodos();

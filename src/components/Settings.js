@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { CustomDialog } from "react-st-modal";
+import TodoImportMenu from "./TodoImportMenu";
 import TodoExportMenu from "./TodoExportMenu";
 
 const Settings = ({ title, todos, setTodos }) => {
@@ -20,24 +21,23 @@ const Settings = ({ title, todos, setTodos }) => {
             }
         );
     };
-    const importHandler = async () => {
+    const importHandler = () => {
         const input = document.getElementById("file-input-import");
         input.click();
     };
-    const fileChangeHandler = (e) => {
-        console.log("read file");
-        const selectedFile = e.files[0];
-        /*const result = await CustomDialog(
+    const fileChangeHandler = async (e) => {
+        const selectedFile = e.target.files[0];
+        const result = await CustomDialog(
             <TodoImportMenu title={ title }
                             todos={ todos }
                             setTodos={ setTodos }
+                            file={ selectedFile }
             />,
             {
                 title: "Import Options",
                 showCloseIcon: true,
             }
-        );*/
-        console.log(selectedFile);
+        );
     };
 
     return (
@@ -47,11 +47,11 @@ const Settings = ({ title, todos, setTodos }) => {
             </div>
             <div className="settings-menu" style={{ display: `${ opened ? "flex" : "none" }` }}>
                 <button onClick={ importHandler } disabled>
-                    <i class="fas fa-file-upload" />
+                    <i className="fas fa-file-upload" />
                     <h3>Import</h3>
                 </button>
                 <button onClick={ exportHandler }>
-                    <i class="fas fa-file-download" />
+                    <i className="fas fa-file-download" />
                     <h3>Export</h3>
                 </button>
             </div>
