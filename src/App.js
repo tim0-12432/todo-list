@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "react-st-modal";
+import Undo from "./components/Undo";
 import Settings from "./components/Settings";
 import Header from "./components/Header";
 import Form from "./components/Form";
@@ -33,6 +34,7 @@ function App() {
         default:
           setFilteredTodos(todos);
       }
+      setLastStep({...lastStep, now: todos});
     }, [todos, filter]);
     useEffect(() => {
       saveToLocalTitle();
@@ -70,10 +72,11 @@ function App() {
 
     return (
         <div className="App">
+            <Undo lastStep={ lastStep } setLastStep={ setLastStep } setTodos={ setTodos } />
             <Settings title={ title } todos={ todos } setTodos={ setTodos } />
             <Header title={ title } changeTitleHandler={ changeTitleHandler } />
             <Form inputText={ inputText } setInputText={ setInputText } todos={ todos } setTodos={ setTodos } setFilter={ setFilter } />
-            <TodoList todos={ filteredTodos } setTodos={ setTodos } />
+            <TodoList todos={ filteredTodos } setTodos={ setTodos } lastStep={ lastStep } setLastStep={ setLastStep }/>
             <FloatingInfo />
         </div>
     );

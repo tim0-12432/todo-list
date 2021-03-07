@@ -3,13 +3,15 @@ import { Draggable } from 'react-beautiful-dnd';
 import { CustomDialog } from "react-st-modal";
 import TodoContextMenu from "./TodoContextMenu";
 
-const Todo = ({ todo, todos, setTodos }) => {
+const Todo = ({ todo, todos, setTodos, lastStep, setLastStep }) => {
     const deleteHandler = (e) => {
+        setLastStep({...lastStep, before: todos});
         setTodos(
             todos.filter((el) => el.id !== todo.id)
         );
     };
     const completeHandler = (e) => {
+        setLastStep({...lastStep, before: todos});
         setTodos(
             todos.map((item) => {
                 if (item.id === todo.id) {
