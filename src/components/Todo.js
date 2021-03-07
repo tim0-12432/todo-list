@@ -48,6 +48,8 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep }) => {
                                 <TodoContextMenu todo={ todo }
                                                 todos={ todos }
                                                 setTodos={ setTodos }
+                                                lastStep={ lastStep }
+                                                setLastStep={ setLastStep }
                                                 completeHandler={ completeHandler }
                                                 deleteHandler={ deleteHandler }
                                 />,

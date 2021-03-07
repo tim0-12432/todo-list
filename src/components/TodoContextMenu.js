@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Prompt, useDialog } from 'react-st-modal';
 
-function TodoContextMenu({ todo, todos, setTodos, completeHandler, deleteHandler }) {
+function TodoContextMenu({ todo, todos, setTodos, lastStep, setLastStep, completeHandler, deleteHandler }) {
     const dialog = useDialog();
 
     const [value, setValue] = useState();
@@ -9,6 +9,7 @@ function TodoContextMenu({ todo, todos, setTodos, completeHandler, deleteHandler
     const changeTextHandler = async () => {
         const newText = await Prompt("Change todo item", { defaultValue: todo.text, isRequired: true, okButtonText: "change" });
         if (newText !== undefined) {
+            setLastStep({...lastStep, before: todos});
             setTodos(
                 todos.map((item) => {
                     if (item.id === todo.id) {
@@ -22,6 +23,7 @@ function TodoContextMenu({ todo, todos, setTodos, completeHandler, deleteHandler
         }
     };
     const subPageHandler = () => {
+        setLastStep({...lastStep, before: todos});
         setTodos(
             todos.map((item) => {
                 if (item.id === todo.id) {
