@@ -188,11 +188,17 @@ form button {
             &.sub {
                 margin-left: 20%;
             }
+            &.invisible {
+                display: none;
+            }
             > i {
                 color: $font_color_completed;
                 margin: 0 10px;
-                opacity: 0;
                 transition: all .3s ease;
+
+                &.fa-equals {
+                    opacity: 0;
+                }
             }
             li {
                 flex: 1;

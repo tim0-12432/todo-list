@@ -3,7 +3,8 @@ import { Draggable } from 'react-beautiful-dnd';
 import { CustomDialog } from "react-st-modal";
 import TodoContextMenu from "./TodoContextMenu";
 
-const Todo = ({ todo, todos, setTodos, lastStep, setLastStep }) => {
+const Todo = ({ todo, todos, setTodos, lastStep, setLastStep, subLayout, closeSubHandler }) => {
+
     const deleteHandler = (e) => {
         setLastStep({...lastStep, before: todos});
         setTodos(
@@ -31,16 +32,20 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep }) => {
         }
     };
 
-    return (
+    return subLayout === undefined ?
+    "Loading..." :
+    (
         <Draggable draggableId={ `draggable-${ todo.id }` } index={ getIndex() }>
             {(provided, snapshot) => (
-                <div className={ `todo${todo?.sub ? " sub" : "" }` }
+                <div className={ `todo${todo?.sub ? " sub" : "" }${subLayout.subHandler !== true ? (subLayout.visible === true ? "" : " invisible") : ""}` }
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     style={{ ...provided.draggableProps.style, boxShadow: snapshot.isDraggingOver ? "0 0 30px rgba(0, 0, 0, .3)" : "" }}
                 >
-                    <i className="fas fa-equals" />
+                    { subLayout?.subHandler
+                    ? (subLayout.closed ? <i className="fas fa-angle-down" onClick={ () => closeSubHandler(subLayout.subs, todo.id) } /> : <i className="fas fa-angle-up" onClick={ () => closeSubHandler(subLayout.subs, todo.id) } />)
+                    : <i className="fas fa-equals" /> }
                     <li className={ `todo-item${todo.completed ? " completed" : ""}` }
                         onClick={ async () => {
                             const text = todo.text;
@@ -54,7 +59,7 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep }) => {
                                                 deleteHandler={ deleteHandler }
                                 />,
                                 {
-                                    title: "Todo Options",
+                                    title: `Todo Options "${text}"`,
                                     showCloseIcon: true,
                                 }
                             );
