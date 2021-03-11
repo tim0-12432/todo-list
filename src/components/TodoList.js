@@ -20,17 +20,14 @@ const TodoList = ({ todos, setTodos, lastStep, setLastStep }) => {
         setLastStep({...lastStep, before: copy});
     };
     const closeSubHandler = (subs, id) => {
-        console.log(subLayout, subs);
         setSubLayout(
             subLayout.map((item, i) => {
                 if (todos[i].id === id) {
-                    console.log("Handler: ", item);
                     return {
                         ...item, closed: !item.closed
                     };
                 }
                 if (subs.includes(i) && item.sub) {
-                    console.log("Sub ", item);
                     return {
                         ...item, visible: !item.visible
                     };
@@ -39,7 +36,6 @@ const TodoList = ({ todos, setTodos, lastStep, setLastStep }) => {
                 }
             })
         );
-        console.log(subLayout);
     };
 
     useEffect(() => {
