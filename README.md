@@ -12,7 +12,7 @@ Call webpage on [https://tim0-12432.github.io/todo-list](https://tim0-12432.gith
 #### App layout:
 |Windows|android|iOS, OSX|
 |---|---|---|
-|Open webpage in Edge and click on "Install as app" in the settings (Does only work with Edge) ![edge](https://github.com/tim0-12432/todo-list/blob/main/src/docs/edge-app.JPG)|Open webpage and click on "Add to Homescreen" in the settings (Works with nearly every browser based on Chromium) ![chromium](https://github.com/tim0-12432/todo-list/blob/main/src/docs/chromium-app.JPG)|Do not use apple products!|
+|Open webpage in Edge and click on "Install as app" in the settings (Does only work with Edge) ![edge](https://github.com/tim0-12432/todo-list/blob/main/src/docs/edge-app.JPG)|Open webpage and click on "Add to Homescreen" in the settings (Works with nearly every browser based on Chromium) ![chromium](https://github.com/tim0-12432/todo-list/blob/main/src/docs/chromium-app.jpeg)|Do not use apple products!|
 
 
 ---
@@ -55,4 +55,4 @@ Call webpage on [https://tim0-12432.github.io/todo-list](https://tim0-12432.gith
 
 ---
 
-License: MIT <img align="center" alt="MIT logo" width="26px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/256px-License_icon-mit-2.svg.png" />
+License: Changes under MIT <img align="center" alt="MIT logo" width="26px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/License_icon-mit-2.svg/256px-License_icon-mit-2.svg.png" />
