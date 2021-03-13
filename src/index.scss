@@ -577,9 +577,16 @@ select {
     box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
     transform: translateX(100%);
     transition: .3s ease;
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-x: hidden;
+    flex-wrap: wrap;
 
     &.manual-open {
         transform: translateX(0);
+        display: flex;
 
         .manualClose {
             left: -50px;
