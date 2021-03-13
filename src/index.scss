@@ -17,6 +17,8 @@ body {
     color: $header_color;
     font-family: 'Poppins', sans-serif;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 }
 ::-webkit-scrollbar {
     width: 20px;
@@ -429,6 +431,14 @@ select {
             font-size: 20px;
             margin-right: 15px;
         }
+        a {
+            color: $accent;
+            text-decoration: none;
+
+            &:hover, &:focus {
+                text-decoration: underline;
+            }
+        }
     }
 }
 /* ===========
@@ -548,6 +558,102 @@ select {
         }
     }
 }
+/* ===========
+    MANUAL
+=========== */
+.manual {
+    max-width: 50%;
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(to top left, $bg1, $bg2);
+    z-index: 20;
+    padding: 20px 40px;
+    color: $font_color;
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    border-bottom-left-radius: 20px;
+    box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+    transform: translateX(100%);
+    transition: .3s ease;
+
+    &.manual-open {
+        transform: translateX(0);
+
+        .manualClose {
+            left: -50px;
+            transition: .3s ease;
+        }
+    }
+
+    .manualClose {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        border: 3px solid $accent;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $accent;
+        background: transparent;
+        font-size: 20px;
+        transition: .3s ease;
+
+        &:hover, &:focus {
+            background: $accent;
+            color: $input_color;
+        }
+    }
+    > h1 {
+        color: $accent;
+        font-size: 4vw;
+    }
+    > h2, > h3 {
+        margin-top: 10px;
+    }
+    > hr {
+        margin-top: 10px;
+    }
+    > table {
+        > thead {
+            > tr {
+                > th {
+                    border-right: 2px solid $font_color_completed;
+
+                    &:last-child {
+                        border: none;
+                    }
+                }
+            }
+        }
+        > tbody {
+            > tr {
+                > td {
+                    padding: 5px;
+                    border-right: 2px solid $font_color_completed;
+
+                    &:last-child {
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+    a, a:visited {
+        color: $accent;
+        text-decoration: none;
+        transition: .3s ease;
+    }
+    a:hover, a:focus {
+        text-decoration: underline;
+    }
+}
+
+
 
 /* ===========
     MOBILE DISPLAY
@@ -597,6 +703,17 @@ select {
 
         .settings-menu {
             width: 100%;
+        }
+    }
+    .manual {
+        max-width: 100%;
+        width: 100%;
+
+        &.manual-open {    
+            .manualClose {
+                left: auto;
+                right: 10px;
+            }
         }
     }
 }

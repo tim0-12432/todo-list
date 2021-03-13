@@ -4,7 +4,7 @@ import { CustomDialog } from "react-st-modal";
 import TodoImportMenu from "./TodoImportMenu";
 import TodoExportMenu from "./TodoExportMenu";
 
-const Settings = ({ title, todos, setTodos }) => {
+const Settings = ({ title, todos, setTodos, handleOpenManual }) => {
     const [opened, setOpened] = useState(false);
 
     const openHandler = () => {
@@ -47,6 +47,10 @@ const Settings = ({ title, todos, setTodos }) => {
                 <i className={ `fas fa-${ opened ? "times": "cog" }` } />
             </div>
             <div className="settings-menu" style={{ display: `${ opened ? "flex" : "none" }` }}>
+                <button onClick={ handleOpenManual }>
+                    <i className="fas fa-map" />
+                    <h3>Manual</h3>
+                </button>
                 <button onClick={ importHandler } disabled>
                     <i className="fas fa-file-upload" />
                     <h3>Import</h3>

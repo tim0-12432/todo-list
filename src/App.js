@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "react-st-modal";
+import Manual from "./components/Manual";
 import Undo from "./components/Undo";
 import Settings from "./components/Settings";
 import Header from "./components/Header";
@@ -14,6 +15,7 @@ function App() {
     const [filteredTodos, setFilteredTodos] = useState([]);
     const [title, setTitle] = useState("My Todo List");
     const [lastStep, setLastStep] = useState({now: {}, before: {}});
+    const [manualOpen, setManualOpen] = useState(false);
 
     useEffect(() => {
       getLocalTodos();
@@ -69,11 +71,15 @@ function App() {
         setTitle(newTitle);
       }
     }
+    const handleOpenManual = () => {
+      setManualOpen(!manualOpen);
+    }
 
     return (
         <div className="App">
+            <Manual open={ manualOpen } setManualOpen={ setManualOpen } />
             <Undo lastStep={ lastStep } setLastStep={ setLastStep } setTodos={ setTodos } />
-            <Settings title={ title } todos={ todos } setTodos={ setTodos } />
+            <Settings title={ title } todos={ todos } setTodos={ setTodos } handleOpenManual={ handleOpenManual } />
             <Header title={ title } changeTitleHandler={ changeTitleHandler } />
             <Form inputText={ inputText } setInputText={ setInputText } todos={ todos } setTodos={ setTodos } setFilter={ setFilter } />
             <TodoList todos={ filteredTodos } setTodos={ setTodos } lastStep={ lastStep } setLastStep={ setLastStep }/>
