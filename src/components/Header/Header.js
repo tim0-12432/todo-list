@@ -1,3 +1,5 @@
+import styles from "./Header.module.scss";
+
 const Header = ({ title, changeTitleHandler }) => {
     return (
         <header onClick={ changeTitleHandler }>

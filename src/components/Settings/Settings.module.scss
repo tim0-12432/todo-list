@@ -1,0 +1,103 @@
+@import "./../../resources/vars.scss";
+
+/* ===========
+    SETTINGS
+=========== */
+.settingsContainer {
+    max-width: 50%;
+    max-height: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    z-index: 10;
+
+    .settingsBtn {
+        border-radius: 50%;
+        border: 3px solid transparent;
+        width: 50px;
+        height: 50px;
+        background: $accent;
+        box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $input_color;
+        cursor: pointer;
+        transition: all .3s ease;
+
+        i {
+            font-size: 30px;
+        }
+        &:hover {
+            border: 3px solid $accent;
+            color: $accent;
+            background: $input_color;
+        }
+    }
+    .settingsMenu {
+        font-size: 17px;
+        margin-top: 10px;
+        color: $input_color;
+        text-shadow: 0 0 5px rgba($color: black, $alpha: .3);
+        border-radius: 15px;
+        padding: 10px 10px;
+        background: rgba($color: white, $alpha: .7);
+        box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+        backdrop-filter: blur(10px);
+        transition: all .3s ease;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        > button {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: $font_color;
+            cursor: pointer;
+            border-radius: 10px;
+            padding: .5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            background: transparent;
+            border: 3px solid transparent;
+            transition: all .3s ease;
+            outline: none;
+            width: 100%;
+
+            &:first-child {
+                margin-top: 0;
+            }
+            &:hover, &:focus {
+                background: $input_color;
+                border: 3px solid $accent;
+                color: $accent;
+            }
+            &[disabled] {
+                color: $font_color_completed;
+                pointer-events: none;
+            }
+            i {
+                margin-right: 10px;
+            }
+            h3 {
+                flex: 1;
+            }
+        }
+    }
+}
+
+/* ===========
+    MOBILE DISPLAY
+=========== */
+@media (max-width: 700px) {
+    .settingsContainer {
+        max-width: 100%;
+
+        .settingsMenu {
+            width: 100%;
+        }
+    }
+}

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Prompt } from "react-st-modal";
-import Manual from "./components/Manual";
-import Undo from "./components/Undo";
-import Settings from "./components/Settings";
-import Header from "./components/Header";
-import Form from "./components/Form";
-import TodoList from "./components/TodoList";
-import FloatingInfo from "./components/FloatingInfo";
+import Manual from "./components/Manual/Manual";
+import Undo from "./components/Undo/Undo";
+import Settings from "./components/Settings/Settings";
+import Header from "./components/Header/Header";
+import Form from "./components/Form/Form";
+import TodoList from "./components/TodoList/TodoList";
+import FloatingInfo from "./components/Information/FloatingInfo";
 
 function App() {
     const [inputText, setInputText] = useState("");

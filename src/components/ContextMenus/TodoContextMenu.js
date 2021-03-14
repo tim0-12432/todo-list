@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Prompt, useDialog } from 'react-st-modal';
 
+import styles from "./ContextMenu.module.scss";
+
 function TodoContextMenu({ todo, todos, setTodos, lastStep, setLastStep, completeHandler, deleteHandler }) {
     const dialog = useDialog();
 
@@ -38,7 +40,7 @@ function TodoContextMenu({ todo, todos, setTodos, lastStep, setLastStep, complet
     };
 
     return (
-        <div className="todo-item-context">
+        <div className={ styles.todoItemContext }>
             <button onClick={() => {
                 changeTextHandler();
                 dialog.close(value);

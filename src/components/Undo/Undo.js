@@ -1,3 +1,4 @@
+import styles from "./Undo.module.scss";
 
 function Undo({ lastStep, setLastStep, setTodos }) {
     function undoHandler() {
@@ -28,7 +29,7 @@ function Undo({ lastStep, setLastStep, setTodos }) {
     };
 
     return (
-        <div className="undo-btn"
+        <div className={ styles.undoBtn }
             onClick={ undoHandler }
             style={{ display: `${ (lastStep === {now: {}, before: {}} || lastStep.before[0] === undefined) ? "none" : "flex" }` }}
         >

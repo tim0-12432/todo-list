@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import styles from "./Information.module.scss";
+
 const FloatingInfo = () => {
     const [opened, setOpened] = useState(false);
 
@@ -8,11 +10,11 @@ const FloatingInfo = () => {
     };
 
     return (
-        <div className="fab-container">
-            <div className="floating-btn" onClick={ openHandler }>
+        <div className={ styles.fabContainer }>
+            <div className={ styles.floatingBtn } onClick={ openHandler }>
                 <i className={ `fas fa-${ opened ? "times": "info" }` } />
             </div>
-            <div className="floating-text" style={{ display: `${ opened ? "block" : "none" }` }}>
+            <div className={ styles.floatingText } style={{ display: `${ opened ? "block" : "none" }` }}>
                 <p><i className="fas fa-cookie-bite" />No cookies!</p>
                 <p><i className="fas fa-database" />No hidden cache!</p>
                 <p><i className="far fa-hdd" />Data stored in your browser's local storage!</p>

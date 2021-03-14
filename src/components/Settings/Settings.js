@@ -1,8 +1,10 @@
 
 import { useState } from "react";
 import { CustomDialog } from "react-st-modal";
-import TodoImportMenu from "./TodoImportMenu";
-import TodoExportMenu from "./TodoExportMenu";
+import TodoImportMenu from "./../ContextMenus/TodoImportMenu";
+import TodoExportMenu from "./../ContextMenus/TodoExportMenu";
+
+import styles from "./Settings.module.scss";
 
 const Settings = ({ title, todos, setTodos, handleOpenManual }) => {
     const [opened, setOpened] = useState(false);
@@ -42,11 +44,11 @@ const Settings = ({ title, todos, setTodos, handleOpenManual }) => {
     };
 
     return (
-        <div className="settings-container">
-            <div className="settings-btn" onClick={ openHandler }>
+        <div className={ styles.settingsContainer }>
+            <div className={ styles.settingsBtn } onClick={ openHandler }>
                 <i className={ `fas fa-${ opened ? "times": "cog" }` } />
             </div>
-            <div className="settings-menu" style={{ display: `${ opened ? "flex" : "none" }` }}>
+            <div className={ styles.settingsMenu } style={{ display: `${ opened ? "flex" : "none" }` }}>
                 <button onClick={ handleOpenManual }>
                     <i className="fas fa-map" />
                     <h3>Manual</h3>

@@ -1,7 +1,11 @@
 import React from "react";
 import { Draggable } from 'react-beautiful-dnd';
 import { CustomDialog } from "react-st-modal";
-import TodoContextMenu from "./TodoContextMenu";
+import cx from "classnames";
+
+import TodoContextMenu from "./../ContextMenus/TodoContextMenu";
+
+import styles from "./Todolist.module.scss";
 
 const Todo = ({ todo, todos, setTodos, lastStep, setLastStep, subLayout, closeSubHandler }) => {
 
@@ -37,7 +41,7 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep, subLayout, closeSu
     (
         <Draggable draggableId={ `draggable-${ todo.id }` } index={ getIndex() }>
             {(provided, snapshot) => (
-                <div className={ `todo${todo?.sub ? " sub" : "" }${subLayout.subHandler !== true ? (subLayout.visible === true ? "" : " invisible") : ""}` }
+                <div className={ cx(styles.todo, todo?.sub ? styles.sub : "", subLayout.subHandler !== true ? (subLayout.visible === true ? "" : styles.invisible) : "") }
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -46,7 +50,7 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep, subLayout, closeSu
                     { subLayout?.subHandler
                     ? (subLayout.closed ? <i className="fas fa-angle-down" onClick={ () => closeSubHandler(subLayout.subs, todo.id) } /> : <i className="fas fa-angle-up" onClick={ () => closeSubHandler(subLayout.subs, todo.id) } />)
                     : <i className="fas fa-equals" /> }
-                    <li className={ `todo-item${todo.completed ? " completed" : ""}` }
+                    <li className={ cx(styles.todoItem, todo.completed ? styles.completed : "") }
                         onClick={ async () => {
                             const text = todo.text;
                             const result = await CustomDialog(
@@ -67,10 +71,10 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep, subLayout, closeSu
                     >
                         { todo.text }
                     </li>
-                    <button onClick={ completeHandler } className="complete-btn">
+                    <button onClick={ completeHandler } className={ styles.completeBtn }>
                         <i className="fas fa-check" />
                     </button>
-                    <button onClick={ deleteHandler } className="trash-btn">
+                    <button onClick={ deleteHandler } className={ styles.trashBtn }>
                         <i className="fas fa-trash" />
                     </button>
                 </div>

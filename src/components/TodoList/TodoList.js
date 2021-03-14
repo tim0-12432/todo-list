@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Todo from "./Todo";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
+import styles from "./Todolist.module.scss";
+
 const TodoList = ({ todos, setTodos, lastStep, setLastStep }) => {
     const [subLayout, setSubLayout] = useState([]);
 
@@ -61,10 +63,10 @@ const TodoList = ({ todos, setTodos, lastStep, setLastStep }) => {
 
     return (
         <DragDropContext onDragEnd={ onDragEnd } onDragStart={ onDragStart }>
-            <div className="todo-container">
+            <div className={ styles.todoContainer }>
                 <Droppable droppableId="droppable-todos" type="TODOS">
                 {(provided, snapshot) => (
-                    <ul className="todo-list"
+                    <ul className={ styles.todoList }
                         ref={provided.innerRef}
                         {...provided.droppableProps}
                     >

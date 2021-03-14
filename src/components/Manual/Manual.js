@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import cx from "classnames";
 
-import mdFile from "./../docs/markdown/manual.md";
+import mdFile from "./../../docs/markdown/manual.md";
+import styles from "./Manual.module.scss";
 
 const gfm = require("remark-gfm");
 
@@ -25,8 +27,8 @@ export default function Manual({ open, setManualOpen }) {
     };
 
     return (
-        <div className={ `manual ${open ? "manual-open" : ""}` }>
-            <div className="manualClose" onClick={ () => setManualOpen(false) }>
+        <div className={ cx(styles.manual, open ? styles.manualOpen : "") }>
+            <div className={ styles.manualClose } onClick={ () => setManualOpen(false) }>
                 <i className="fas fa-times"></i>
             </div>
             <ReactMarkdown plugins={[gfm]} renderers={ renderers } children={ markdown } />

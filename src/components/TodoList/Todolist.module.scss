@@ -1,0 +1,102 @@
+@import "./../../resources/vars.scss";
+
+/* ===========
+    TODO-LIST
+=========== */
+.todoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+
+    .todoList {
+        min-width: 30%;
+        list-style: none;
+
+        .todo {
+            margin: .5rem;
+            background: $input_color;
+            font-size: 1.5rem;
+            color: $font_color;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 1s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+
+            &.sub {
+                margin-left: 20%;
+            }
+            &.invisible {
+                display: none;
+            }
+            > i {
+                color: $font_color_completed;
+                margin: 0 10px;
+                transition: all .3s ease;
+
+                &.fa-equals {
+                    opacity: 0;
+                }
+            }
+            li {
+                flex: 1;
+                padding: 0 .5rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                &.completed {
+                    text-decoration: line-through;
+                    color: $font_color_completed;
+                }
+            }
+            .trashBtn, .completeBtn {
+                color: $input_color;
+                cursor: pointer;
+                background: $accent;
+                outline: none;
+                padding: 1rem;
+                font-size: 1rem;
+                border: 3px solid $accent;
+                transition: all .3s ease;
+            
+                &:hover {
+                    background: $input_color;
+                    color: $accent;
+                }
+                .fa-trash, .fa-check {
+                    pointer-events: none;
+                }
+            }
+            .trashBtn {
+                border-radius: 0 10px 10px 0;
+            }
+            .completeBtn {
+                background: $checkbox;
+                border: 3px solid $checkbox;
+
+                &:hover {
+                    background: $input_color;
+                    color: $checkbox;
+                }
+            }
+            &:hover {
+                i {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+/* ===========
+    MOBILE DISPLAY
+=========== */
+@media (max-width: 700px) {
+    .todoList {
+        width: 95%;
+    }
+}

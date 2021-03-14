@@ -1,0 +1,125 @@
+@import "./../../resources/vars.scss";
+
+/* ===========
+    FORM AND SELECT
+=========== */
+form {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form input, form button {
+    padding: .5rem;
+    font-size: 2rem;
+    border: none;
+    outline: none;
+    background: $input_color;
+    box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+}
+form input {
+    color: $font_color;
+    border-radius: 10px 0 0 10px;
+    border: 3px solid transparent;
+    transition: all .3s ease;
+
+    &:focus, &:hover {
+        border: 3px solid $accent;
+    }
+}
+form button {
+    color: $accent;
+    cursor: pointer;
+    background: $input_color;
+    border-radius: 0 10px 10px 0;
+    border: 3px solid transparent;
+    transition: all .3s ease;
+
+    &:hover {
+        background: $accent;
+        border: 3px solid $accent;
+        color: $input_color;
+    }
+}
+.filterTodo {
+    padding: 1rem;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: 0 !important;
+    background-image: none;
+}
+.select {
+    border-radius: 10px;
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+
+    &:after {
+        content: "\25BC";
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 1rem;
+        color: $input_color;
+        background: $accent;
+        cursor: pointer;
+        pointer-events: none;
+    }
+    select {
+        color: $accent;
+        background: $input_color;
+        border: 3px solid transparent;
+        font-family: 'Poppins', sans-serif;
+        outline: none;
+        cursor: pointer;
+        width: 12rem;
+        transition: all .3s ease;
+
+        &:hover {
+            background: $accent;
+            color: $input_color;
+            border: 3px solid $accent;
+        }
+        option {
+            background: $input_color;
+            color: $accent;
+            border: none;
+            outline: none;
+        }
+    }
+}
+
+/* ===========
+    MOBILE DISPLAY
+=========== */
+@media (max-width: 700px) {
+    form {
+        width: 100%;
+        min-height: 20vh;
+        padding: 0 10px;
+
+        input {
+            width: 70%;
+            position: absolute;
+            top: 20vh;
+            left: 5%;
+        }
+        button {
+            width: 20%;
+            position: absolute;
+            top: 20vh;
+            right: 5%;
+        }
+    }
+    .select {
+        position: absolute;
+        top: 27vh;
+    }
+}

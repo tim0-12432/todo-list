@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDialog } from 'react-st-modal';
 
+import styles from "./ContextMenu.module.scss";
+
 function TodoImportMenu({ title, todos, setTodos, file }) {
     const dialog = useDialog();
     const headers = ["todo", "completed", "sub"]
@@ -41,7 +43,7 @@ function TodoImportMenu({ title, todos, setTodos, file }) {
     }, []);
 
     return (
-        <div className="import-menu">
+        <div className={ styles.importMenu }>
             <label>Imported from { file.name }</label>
             <ul>
                 { displayTodoList(newTodos) }

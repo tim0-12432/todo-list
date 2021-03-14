@@ -3,6 +3,8 @@ import jsPDF from 'jspdf';
 import * as htmlToImage from 'html-to-image';
 import { useDialog } from 'react-st-modal';
 
+import styles from "./ContextMenu.module.scss";
+
 function TodoExportMenu({ title, todos, setOpened }) {
     const dialog = useDialog();
     const headers = ["todo", "completed", "sub"]
@@ -111,7 +113,7 @@ function TodoExportMenu({ title, todos, setOpened }) {
     };
 
     return (
-        <div className="export-menu">
+        <div className={ styles.exportMenu }>
             <button onClick={() => {
                 exportCSV();
                 dialog.close(value);

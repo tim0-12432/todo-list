@@ -1,0 +1,50 @@
+@import "./../../resources/vars.scss";
+
+/* ===========
+    HEADER
+=========== */
+header {
+    font-size: 5rem;
+    color: $header_color;
+    text-shadow: 0 0 15px rgba($color: black, $alpha: .2);
+    font-weight: 700;
+    width: 100%;
+    position: relative;
+    text-align: center;
+
+    i {
+        margin-left: 20px;
+        color: $font_color_completed;
+        font-size: 2rem;
+        text-shadow: none;
+        opacity: 0;
+        transition: all .3s ease;
+    }
+    &:hover {
+        i {
+            opacity: 1;
+        }
+    }
+}
+header {
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===========
+    MOBILE DISPLAY
+=========== */
+@media (max-width: 700px) {
+    header {
+        font-size: 10vw;
+        width: 100%;
+        min-height: 20vh;
+        padding: 0 10px;
+
+        i {
+            font-size: 5vw;
+        }
+    }
+}

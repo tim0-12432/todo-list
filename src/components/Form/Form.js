@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "./Form.module.scss";
+
 const Form = ({ inputText, setInputText, todos, setTodos, setFilter }) => {
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
@@ -19,12 +21,12 @@ const Form = ({ inputText, setInputText, todos, setTodos, setFilter }) => {
 
     return (
         <form>
-            <input onChange={ inputTextHandler } type="text" className="todo-input" value={ inputText } />
-            <button onClick={ submitTodoHandler } type="submit" className="todo-button">
+            <input onChange={ inputTextHandler } type="text" className={ styles.todoInput } value={ inputText } />
+            <button onClick={ submitTodoHandler } type="submit" className={ styles.todoButton }>
                 <i className="fas fa-plus-square" />
             </button>
-            <div className="select">
-                <select name="todos" className="filter-todo" onChange={ changeFilterHandler }>
+            <div className={ styles.select }>
+                <select name="todos" className={ styles.filterTodo } onChange={ changeFilterHandler }>
                     <option value="all">All</option>
                     <option value="completed">Completed</option>
                     <option value="uncompleted">Uncompleted</option>
