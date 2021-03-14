@@ -27,7 +27,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "e2e": "jest --config jest-e2e.js",
     "deploy": "gh-pages -b built-page -d build",
     "eject": "react-scripts eject"

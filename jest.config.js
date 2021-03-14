@@ -1,5 +1,6 @@
 module.exports = {
     testPathIgnorePatterns: [
-        "e2e"
+        "e2e",
+        "node_modules"
     ]
 };
