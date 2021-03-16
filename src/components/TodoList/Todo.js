@@ -49,7 +49,7 @@ const Todo = ({ todo, todos, setTodos, lastStep, setLastStep, subLayout, closeSu
                 >
                     { subLayout?.subHandler
                     ? (subLayout.closed ? <i className="fas fa-angle-down" onClick={ () => closeSubHandler(subLayout.subs, todo.id) } /> : <i className="fas fa-angle-up" onClick={ () => closeSubHandler(subLayout.subs, todo.id) } />)
-                    : <i className="fas fa-equals" /> }
+                    : <i className={ cx("fas", "fa-equals", styles.drag) } /> }
                     <li className={ cx(styles.todoItem, todo.completed ? styles.completed : "") }
                         onClick={ async () => {
                             const text = todo.text;
